@@ -7,6 +7,7 @@ TagManager:
   - LevelBounds
   - Music
   - Background
+  - Weight
   layers:
   - Default
   - TransparentFX
@@ -36,7 +37,7 @@ TagManager:
   - PlatformsPlayerOnly
   - MidHeightOneWayPlatforms
   - Pushables
-  - 
+  - SeeSaw
   - 
   - 
   - 
