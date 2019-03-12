@@ -12,7 +12,7 @@ public class BranchCollision : MonoBehaviour
 
     void Start()
     {
-        
+        branch.GetComponent<PolygonCollider2D>().isTrigger = true;
     }
 
     
@@ -25,7 +25,7 @@ public class BranchCollision : MonoBehaviour
     {
         if(col.gameObject.tag == "Weight")
         {
-            
+            branch.GetComponent<PolygonCollider2D>().isTrigger = false;
             branch.GetComponent<Rigidbody2D>().gravityScale = 1;
             this.GetComponent<SpriteRenderer>().enabled = false;
         }
