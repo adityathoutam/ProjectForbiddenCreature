@@ -17,7 +17,7 @@ public class Swinging : MonoBehaviour
         anim = player.GetComponent<Animator>();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
@@ -25,9 +25,17 @@ public class Swinging : MonoBehaviour
             {
                 grab = true;
                 anim.SetBool("Swing", true);
-                player.GetComponent<Rigidbody2D>().simulated = false;
+                collision.gameObject.GetComponent<Rigidbody2D>().simulated = false;
             }
-           
+            if (grab)
+            {
+                collision.gameObject.GetComponent<Demo>().grounded = false;
+                collision.transform.SetParent(this.transform);
+            }
+            else
+            {
+                collision.transform.SetParent(null);
+            }
         }
     }
 
@@ -42,12 +50,14 @@ public class Swinging : MonoBehaviour
 
         if(grab)
         {
-            player.GetComponent<Demo>().grounded = false;
-            player.transform.parent = transform;
-        }
-        else
-        {
-            player.transform.parent = null;
+            if(Input.GetKey(KeyCode.D))
+            {
+                transform.eulerAngles += new Vector3(0, 0, 2f);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.eulerAngles += new Vector3(0, 0, -2f);
+            }
         }
     }
 }

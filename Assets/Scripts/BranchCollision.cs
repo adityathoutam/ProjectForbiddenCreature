@@ -5,10 +5,10 @@ using UnityEngine;
 public class BranchCollision : MonoBehaviour
 {
    
-   public GameObject branchParent;
+   public GameObject branch;
 
-    public Vector3 start;
-    public Vector3 end;
+    //public Vector3 start;
+    //public Vector3 end;
 
     void Start()
     {
@@ -25,7 +25,9 @@ public class BranchCollision : MonoBehaviour
     {
         if(col.gameObject.tag == "Weight")
         {
-            StartCoroutine(Bridge(branchParent,start,end,2));
+            
+            branch.GetComponent<Rigidbody2D>().gravityScale = 1;
+            this.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
@@ -38,7 +40,7 @@ public class BranchCollision : MonoBehaviour
             i += Time.deltaTime*rate;
             if(obj!=null)
             {
-                obj.transform.position = Vector2.Lerp(start,end,i);
+                obj.transform.position = Vector3.Lerp(start,end,i);
                 Debug.Log("Afsa");
             }
         }
