@@ -8,6 +8,8 @@ public class Swinging : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    public bool grab;
+
     Animator anim;
 
     void Start()
@@ -15,25 +17,37 @@ public class Swinging : MonoBehaviour
         anim = player.GetComponent<Animator>();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             if(Input.GetKey(KeyCode.LeftControl))
             {
+                grab = true;
                 anim.SetBool("Swing", true);
                 player.GetComponent<Rigidbody2D>().simulated = false;
             }
-            else
-            {
-                anim.SetBool("Swing", false);
-                player.GetComponent<Rigidbody2D>().simulated = true;
-            }
+           
         }
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            grab = false;
+            anim.SetBool("Swing", false);
+            player.GetComponent<Rigidbody2D>().simulated = true;
+        }
+
+        if(grab)
+        {
+            player.GetComponent<Demo>().grounded = false;
+            player.transform.parent = transform;
+        }
+        else
+        {
+            player.transform.parent = null;
+        }
     }
 }
