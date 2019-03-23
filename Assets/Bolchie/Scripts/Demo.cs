@@ -30,12 +30,17 @@ public class Demo : MonoBehaviour {
 	bool dead = false;
 	bool attack = false;
 
+
+    public GameObject weapon;
+
 	void Start () {
 		GetComponent<Rigidbody2D> ().freezeRotation = true;
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
 
-	}
+
+        weapon.SetActive(false);
+    }
 
 	void Update()
 	{
@@ -67,14 +72,14 @@ public class Demo : MonoBehaviour {
 	//attacking and jumping//
 	private void HandleInput()
 	{
-		if (Input.GetKeyDown (KeyCode.LeftAlt) && !dead) 
+		if (Input.GetKeyDown (KeyCode.LeftControl) && !dead) 
 		{
 			attack = true;
 			anim.SetBool ("Attack", true);
 			anim.SetFloat ("Speed", 0);
 
 		}
-		if (Input.GetKeyUp(KeyCode.LeftAlt))
+		if (Input.GetKeyUp(KeyCode.LeftControl))
 			{
 			attack = false;
 			anim.SetBool ("Attack", false);
@@ -99,8 +104,21 @@ public class Demo : MonoBehaviour {
 				}
 		}
 	}
-		
-	private void Flip (float horizontal)
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "bat")
+        {
+            collision.gameObject.SetActive(false);
+            weapon.SetActive(true);
+        }
+        if (collision.gameObject.tag == "Fenemy")
+        {
+            anim.SetBool("Dead", true);
+        }
+    }
+
+    private void Flip (float horizontal)
 	{
 			facingRight = !facingRight;
 			Vector3 theScale = transform.localScale;

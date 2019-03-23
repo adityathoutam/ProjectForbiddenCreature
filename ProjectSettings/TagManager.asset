@@ -8,6 +8,8 @@ TagManager:
   - Music
   - Background
   - Weight
+  - bat
+  - Fenemy
   layers:
   - Default
   - TransparentFX
