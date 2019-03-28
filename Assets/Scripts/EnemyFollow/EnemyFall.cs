@@ -7,7 +7,7 @@ public class EnemyFall : MonoBehaviour
     public GameObject player;
     public GameObject bridge;
 
-    public GameObject enemy;
+    public GameObject[] enemy;
 
     void Start()
     {
@@ -21,12 +21,13 @@ public class EnemyFall : MonoBehaviour
         {
             bridge.GetComponent<Rigidbody2D>().gravityScale = 1;
 
-            enemy.GetComponent<EnemyFollow>().enabled = true;
-
-            foreach (Transform child in enemy.transform)
+            for (int i = 0; i < enemy.Length; i++)
             {
-                child.GetComponent<Rigidbody2D>().gravityScale = 1;
-                child.GetComponent<Animator>().enabled = true;
+                enemy[i].GetComponent<EnemyFollow>().enabled = true;
+
+
+                    enemy[i].GetComponent<Rigidbody2D>().gravityScale = 1;
+                    enemy[i].GetComponent<Animator>().enabled = true;
             }
         }
     }

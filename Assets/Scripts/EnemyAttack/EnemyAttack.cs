@@ -9,6 +9,8 @@ public class EnemyAttack : MonoBehaviour
 
     public GameObject enemyfightPos;
 
+    public GameObject Bullet;
+
     private bool local = true;
     public bool attack;
 
@@ -22,21 +24,15 @@ public class EnemyAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if(collision.gameObject.tag == "Player")
-        { 
-
-            if(player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack - Basic"))
+        if(collision.gameObject.tag == "Bullet")
+        {
+            count--;
+            Debug.Log(count);
+            this.GetComponent<Animator>().SetTrigger("EnemyHit");
+            if (count==0)
             {
-                Debug.Log(count);
-                this.GetComponent<Animator>().SetTrigger("EnemyHit");
-                count--;
-                
-            }
-            if(count==-1)
-            {
-                
                 this.GetComponent<Animator>().SetBool("EnemyDeath", true);
-                cam.GetComponent<CameraFollow>().enabled = true;
+                Destroy(this.gameObject, 5f);
             }
         }
     }
@@ -46,12 +42,19 @@ public class EnemyAttack : MonoBehaviour
         
         if (player.transform.position.x >= enemyfightPos.transform.position.x && count==3)
         {
-            cam.GetComponent<CameraFollow>().enabled = false;
+            //cam.GetComponent<CameraFollow>().enabled = false;
 
             this.GetComponent<Animator>().SetBool("EnemyAttack", true);
 
 
         }
+
+        
+    }
+
+    void ThrowAcid()
+    {
+        GameObject go = Instantiate(Bullet, Bullet.transform.position, Bullet.transform.rotation);
     }
 
     

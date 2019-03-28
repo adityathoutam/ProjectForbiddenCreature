@@ -7,9 +7,7 @@ public class BranchCollision : MonoBehaviour
    
    public GameObject branch;
 
-    //public Vector3 start;
-    //public Vector3 end;
-
+    
     void Start()
     {
         branch.GetComponent<PolygonCollider2D>().isTrigger = true;
@@ -21,9 +19,9 @@ public class BranchCollision : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Weight")
+        if (col.gameObject.tag == "Weight")
         {
             branch.GetComponent<PolygonCollider2D>().isTrigger = false;
             branch.GetComponent<Rigidbody2D>().gravityScale = 1;
