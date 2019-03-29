@@ -36,12 +36,12 @@ public class FinalBoss : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if(other.gameObject.tag == "Bullet")
-        //{
-        //   // this.GetComponent<Animator>().SetBool("BossIdle", true);
-        //    count--;
-        //}
-        if(count==0)
+        if (other.gameObject.tag == "Bullet")
+        {
+            // this.GetComponent<Animator>().SetBool("BossIdle", true);
+            count--;
+        }
+        if (count == 0)
         {
             this.GetComponent<Animator>().SetBool("BossAttack", false);
 
@@ -49,15 +49,15 @@ public class FinalBoss : MonoBehaviour
         }
     }
 
-    public void ThrowAcid()
+    public void ThrowingAcid()
     {
         Debug.Log("AAACCCIIIDDD");
         GameObject go = Instantiate(Bullet, BulletPos.transform.position, Bullet.transform.rotation);
     }
 
-    //void L2Go()
-    //{
-    //    Debug.Log("BWAAAAHAHAHA");
-    //    GameObject go2 = Instantiate(L2enemy, L2enemy.transform.position, L2enemy.transform.rotation);
-    //}
+    void L2Go()
+    {
+        Debug.Log("BWAAAAHAHAHA");
+        GameObject go2 = Instantiate(L2enemy, L2enemy.transform.position, L2enemy.transform.rotation);
+    }
 }

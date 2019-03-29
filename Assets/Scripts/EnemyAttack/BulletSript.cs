@@ -24,9 +24,13 @@ public class BulletSript : MonoBehaviour
             }
         }
 
-        //if(collision.gameObject.tag == "Boss")
+        //if (collision.gameObject.tag == "Boss")
         //{
         //    collision.GetComponent<FinalBoss>().count--;
+        //}
+        //if(collision.gameObject.GetComponent<FinalBoss>().count==0)
+        //{
+        //    Destroy(collision.gameObject, 3f);
         //}
     }
 
