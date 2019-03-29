@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSript : MonoBehaviour
+public class L2EnemyAttack : MonoBehaviour
 {
-
     public bool reverse;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,23 +22,22 @@ public class BulletSript : MonoBehaviour
                 collision.GetComponent<Animator>().SetBool("Dead", true);
             }
         }
-
-        if(collision.gameObject.tag == "Boss")
-        {
-            collision.GetComponent<Animator>().SetBool("BossIdle", true);
-        }
     }
 
     private void Update()
     {
         if (!reverse)
         {
+            this.GetComponent<Animator>().SetBool("L2Walk", true);
             this.transform.Translate(-Vector2.right * 5 * Time.deltaTime);
         }
-        if(reverse)
+        if (reverse)
         {
-            this.transform.Translate(Vector2.right * 5 * Time.deltaTime);
+            this.GetComponent<Animator>().SetBool("L2Walk", false);
+            this.GetComponent<Animator>().SetBool("L2Death", true);
+
         }
         Destroy(this.gameObject, 5f);
+
     }
 }
