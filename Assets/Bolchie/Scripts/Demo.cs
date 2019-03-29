@@ -112,6 +112,11 @@ public class Demo : MonoBehaviour {
             collision.gameObject.SetActive(false);
             weapon.SetActive(true);
         }
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.tag == "Fenemy")
         {
             anim.SetBool("Dead", true);

@@ -24,10 +24,10 @@ public class BulletSript : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.tag == "Boss")
-        {
-            collision.GetComponent<Animator>().SetBool("BossIdle", true);
-        }
+        //if(collision.gameObject.tag == "Boss")
+        //{
+        //    collision.GetComponent<FinalBoss>().count--;
+        //}
     }
 
     private void Update()
