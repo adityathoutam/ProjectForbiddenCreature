@@ -241,7 +241,6 @@ PlayerSettings:
   tvOSManualSigningProvisioningProfileType: 0
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 0
-  iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
   clonedFromGUID: b7e0b6f5ad9504b9d911ba69af263ff3
   templatePackageId: 

@@ -35,6 +35,7 @@ public class StartingScene : MonoBehaviour
 
         if(go.transform.position==Vector3.zero)
         {
+            go.SetActive(false);
             StartCoroutine(DoSome());
 
         }

@@ -91,18 +91,18 @@ public class Demo : MonoBehaviour {
 			rb.AddForce (new Vector2 (0,jumpForce));
 		}
 
-		//dead animation for testing//
-		if (Input.GetKeyDown (KeyCode.Z)) 
-		{
-			if (!dead) {
-				anim.SetBool ("Dead", true);
-				anim.SetFloat ("Speed", 0);
-				dead = true;
-			} else {
-					anim.SetBool ("Dead", false);
-					dead = false;
-				}
-		}
+		////dead animation for testing//
+		//if (Input.GetKeyDown (KeyCode.Z)) 
+		//{
+		//	if (!dead) {
+		//		anim.SetBool ("Dead", true);
+		//		anim.SetFloat ("Speed", 0);
+		//		dead = true;
+		//	} else {
+		//			anim.SetBool ("Dead", false);
+		//			dead = false;
+		//		}
+		//}
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -119,7 +119,7 @@ public class Demo : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Fenemy")
         {
-            anim.SetBool("Dead", true);
+           // anim.SetBool("Dead", true);
         }
     }
 
