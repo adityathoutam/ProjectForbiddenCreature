@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpiderCrusher : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class SpiderCrusher : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Animator>().SetBool("Dead", true);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(0);
         }
         if (collision.gameObject.tag == "Fenemy")
         {

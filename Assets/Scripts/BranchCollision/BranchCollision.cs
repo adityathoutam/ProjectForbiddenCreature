@@ -39,7 +39,7 @@ public class BranchCollision : MonoBehaviour
             if(obj!=null)
             {
                 obj.transform.position = Vector3.Lerp(start,end,i);
-                Debug.Log("Afsa");
+                
             }
         }
 

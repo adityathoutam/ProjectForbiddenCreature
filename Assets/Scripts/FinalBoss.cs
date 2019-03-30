@@ -49,15 +49,15 @@ public class FinalBoss : MonoBehaviour
         }
     }
 
-    public void ThrowingAcid()
-    {
-        Debug.Log("AAACCCIIIDDD");
-        GameObject go = Instantiate(Bullet, BulletPos.transform.position, Bullet.transform.rotation);
-    }
+    //public void ThrowingAcid()
+    //{
+
+    //    GameObject go = Instantiate(Bullet, BulletPos.transform.position, Bullet.transform.rotation);
+    //}
 
     void L2Go()
     {
-        Debug.Log("BWAAAAHAHAHA");
+       
         GameObject go2 = Instantiate(L2enemy, L2enemy.transform.position, L2enemy.transform.rotation);
     }
 }

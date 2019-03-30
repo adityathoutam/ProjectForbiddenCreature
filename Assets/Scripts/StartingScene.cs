@@ -64,7 +64,7 @@ public class StartingScene : MonoBehaviour
     }
     public void OpenPortal()
     {
-        Debug.Log("aga");
+
         portalCollider.GetComponent<ParticleSystem>().Play();
         
         EnemyTrajectoryPath(go.transform.position, furmiddle.transform.position, furend.transform.position,go);

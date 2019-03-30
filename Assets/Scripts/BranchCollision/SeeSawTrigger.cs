@@ -29,10 +29,10 @@ public class SeeSawTrigger : MonoBehaviour
     {
         if (count <= 0)
         {
-            Debug.Log(count);   
+
 
             count = 10;
-            Debug.Log("af");
+
             StartCoroutine(RotateObject(seesawlog, startPos, endPos,0.1f));
             EnemyTrajectoryPath(go.transform.position, middlepoint.transform.position, rope.transform.position);
 

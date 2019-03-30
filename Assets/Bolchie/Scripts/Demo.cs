@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Basic Player Script//
 //controls: 
@@ -119,7 +120,10 @@ public class Demo : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Fenemy")
         {
-           // anim.SetBool("Dead", true);
+            anim.SetBool("Dead", true);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(0);
+
         }
     }
 

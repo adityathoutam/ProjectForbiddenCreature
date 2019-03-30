@@ -27,7 +27,7 @@ public class EnemyAttack : MonoBehaviour
         if(collision.gameObject.tag == "Bullet")
         {
             count--;
-            Debug.Log(count);
+
             this.GetComponent<Animator>().SetTrigger("EnemyHit");
             if (count==0)
             {
