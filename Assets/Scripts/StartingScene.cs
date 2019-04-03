@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartingScene : MonoBehaviour
 {
@@ -18,8 +19,17 @@ public class StartingScene : MonoBehaviour
 
     Animator anim;
 
+    Animator Imganim;
+    public Image img;
+
+
     void Start()
     {
+
+        Imganim = img.GetComponent<Animator>();
+
+        StartCoroutine(Fade());
+
         portalCollider.GetComponent<ParticleSystem>().Stop();
 
         anim = GetComponent<Animator>();
@@ -42,6 +52,13 @@ public class StartingScene : MonoBehaviour
 
         
     }
+
+    IEnumerator Fade()
+    {
+        Imganim.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(2f);
+    }
+
     IEnumerator DoSome()
     {
        
