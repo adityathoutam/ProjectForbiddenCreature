@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StartingScene : MonoBehaviour
 {
@@ -20,12 +19,12 @@ public class StartingScene : MonoBehaviour
     Animator anim;
 
     Animator Imganim;
-    public Image img;
+    public GameObject img;
 
 
     void Start()
     {
-
+        img.SetActive(true);
         Imganim = img.GetComponent<Animator>();
 
         StartCoroutine(Fade());

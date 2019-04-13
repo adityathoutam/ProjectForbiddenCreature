@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SpiderCrusher : MonoBehaviour
 {
-    
+
+    public GameObject blank;
+
     void Start()
     {
         
@@ -23,12 +25,20 @@ public class SpiderCrusher : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Animator>().SetBool("Dead", true);
+            blank.SetActive(true);
             Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(0);
+            StartCoroutine(Fade());
         }
         if (collision.gameObject.tag == "Fenemy")
         {
             collision.gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator Fade()
+    {
+        blank.GetComponent<Animator>().SetBool("FadeIn", true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
     }
 }

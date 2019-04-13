@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class BulletSript : MonoBehaviour
 {
 
     public bool reverse;
+
+    private void Start()
+    {
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,8 +27,10 @@ public class BulletSript : MonoBehaviour
             else
             {
                 collision.GetComponent<Animator>().SetBool("Dead", true);
-                
-                SceneManager.LoadScene(0);
+                collision.GetComponent<Demo>().blank.SetActive(true);
+                collision.GetComponent<Demo>().blank.GetComponent<Animator>().SetBool("FadeIn", true);
+                StartCoroutine(Fade());
+               // SceneManager.LoadScene(0);
             }
         }
 
@@ -35,6 +42,13 @@ public class BulletSript : MonoBehaviour
         //{
         //    Destroy(collision.gameObject, 3f);
         //}
+    }
+
+    IEnumerator Fade()
+    {
+       // imganim.SetBool("FadeIn", true);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(0);
     }
 
     private void Update()

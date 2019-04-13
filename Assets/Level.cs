@@ -13,6 +13,7 @@ public class Level : MonoBehaviour
     private void Start()
     {
         anim = blank.GetComponent<Animator>();
+        StartCoroutine(StartFade());        
     }
 
     public void LoadLevel()
@@ -24,7 +25,13 @@ public class Level : MonoBehaviour
     IEnumerator Fade()
     {
         anim.SetBool("FadeIn", true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(1);
+    }
+
+    IEnumerator StartFade()
+    {
+        anim.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(2f);
     }
 }

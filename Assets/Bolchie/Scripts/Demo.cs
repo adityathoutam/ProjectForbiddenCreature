@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 //Basic Player Script//
@@ -34,10 +35,14 @@ public class Demo : MonoBehaviour {
 
     public GameObject weapon;
 
+    public GameObject blank;
+    Animator imganim;
+
 	void Start () {
 		GetComponent<Rigidbody2D> ().freezeRotation = true;
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
+        imganim = blank.GetComponent<Animator>();
 
 
         weapon.SetActive(false);
@@ -106,6 +111,13 @@ public class Demo : MonoBehaviour {
 		//}
 	}
 
+    IEnumerator Fade()
+    {
+        imganim.SetBool("FadeIn", true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "bat")
@@ -121,8 +133,10 @@ public class Demo : MonoBehaviour {
         if (collision.gameObject.tag == "Fenemy")
         {
             anim.SetBool("Dead", true);
+            blank.SetActive(true);
             Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(0);
+            StartCoroutine(Fade());
+            //SceneManager.LoadScene(0);
 
         }
     }

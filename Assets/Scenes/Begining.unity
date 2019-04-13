@@ -7913,7 +7913,7 @@ MonoBehaviour:
   bossmiddle: {fileID: 174738152}
   bossend: {fileID: 490437283}
   speed: 2
-  img: {fileID: 1509798124}
+  img: {fileID: 1509798121}
 --- !u!50 &201750928
 Rigidbody2D:
   serializedVersion: 4
@@ -19079,6 +19079,11 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 743136237}
+    - target: {fileID: 114393563242933454, guid: d58e58070863f4a4e9a88c181489ff86,
+        type: 3}
+      propertyPath: blank
+      value: 
+      objectReference: {fileID: 1509798121}
     - target: {fileID: 212173678308109152, guid: d58e58070863f4a4e9a88c181489ff86,
         type: 3}
       propertyPath: m_Sprite
@@ -52045,7 +52050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1509798122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52097,7 +52102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -58689,6 +58694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eaee435e58952e43b094937055f29e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blank: {fileID: 1509798121}
 --- !u!4 &1727259740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 497438, guid: 8d218001a1e147542bc5a9058259e49f,
