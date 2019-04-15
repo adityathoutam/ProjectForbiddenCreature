@@ -139,6 +139,15 @@ public class Demo : MonoBehaviour {
             //SceneManager.LoadScene(0);
 
         }
+        if (collision.gameObject.tag == "Archer")
+        {
+            anim.SetBool("Dead", true);
+            blank.SetActive(true);
+            Scene scene = SceneManager.GetActiveScene();
+            StartCoroutine(Fade());
+            //SceneManager.LoadScene(0);
+
+        }
     }
 
     private void Flip (float horizontal)

@@ -13,6 +13,8 @@ TagManager:
   - Bullet
   - Boss
   - Portal
+  - Bigbranch
+  - Archer
   layers:
   - Default
   - TransparentFX
