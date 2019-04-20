@@ -69,7 +69,9 @@ public class Goblin_Archer : MonoBehaviour
 
     IEnumerator Fall()
     {
-        yield return new WaitForSeconds(1f);
+        this.GetComponent<Rigidbody2D>().gravityScale = 0;
+        yield return new WaitForSeconds(1.5f);
+        this.GetComponent<Rigidbody2D>().gravityScale = 1;
         breakdown = true;
     }
 
