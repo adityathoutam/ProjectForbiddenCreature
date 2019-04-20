@@ -38,6 +38,8 @@ public class Demo : MonoBehaviour {
     public GameObject blank;
     Animator imganim;
 
+    private Touch touch;
+
 	void Start () {
 		GetComponent<Rigidbody2D> ().freezeRotation = true;
 		rb = GetComponent<Rigidbody2D> ();
@@ -51,6 +53,7 @@ public class Demo : MonoBehaviour {
 	void Update()
 	{
 		HandleInput ();
+        HandleTouchInput();
 	}
 
 	//movement//
@@ -110,6 +113,53 @@ public class Demo : MonoBehaviour {
 		//		}
 		//}
 	}
+
+    private void HandleTouchInput()
+    {
+        float starttime;
+        float endtime;
+
+        Vector2 startPos;
+        Vector2 endPos;
+
+        bool istationary;
+
+
+        if (touch.phase == TouchPhase.Began)
+        {
+            starttime = Time.time;
+            startPos = touch.position;
+        }
+        if(touch.phase == TouchPhase.Stationary)
+        {
+            istationary = true;
+
+            grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+            anim.SetBool("Ground", grounded);
+
+            float horizontal = Input.GetAxis("Horizontal");
+            if (!dead && !attack)
+            {
+                anim.SetFloat("vSpeed", rb.velocity.y);
+                anim.SetFloat("Speed", Mathf.Abs(horizontal));
+                rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            }
+            if (horizontal > 0 && !facingRight && !dead && !attack)
+            {
+                Flip(horizontal);
+            }
+
+            else if (horizontal < 0 && facingRight && !dead && !attack)
+            {
+                Flip(horizontal);
+            }
+        }
+        else if(touch.phase == TouchPhase.Ended)
+        {
+            endtime = Time.time;
+            endPos = touch.position;
+        }
+    }
 
     IEnumerator Fade()
     {
