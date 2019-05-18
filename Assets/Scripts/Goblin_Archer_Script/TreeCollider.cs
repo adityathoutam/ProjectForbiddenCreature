@@ -15,7 +15,7 @@ public class TreeCollider : MonoBehaviour
    
     void Update()
     {
-        if(count==0)
+        if(count<=0)
         {
             branch.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
