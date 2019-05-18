@@ -32,6 +32,8 @@ public class Demo : MonoBehaviour {
 	bool dead = false;
 	bool attack = false;
 
+    bool istationary;
+
 
     public GameObject weapon;
 
@@ -122,7 +124,7 @@ public class Demo : MonoBehaviour {
         Vector2 startPos;
         Vector2 endPos;
 
-        bool istationary;
+        
 
 
         if (touch.phase == TouchPhase.Began)
@@ -136,23 +138,7 @@ public class Demo : MonoBehaviour {
 
             grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
             anim.SetBool("Ground", grounded);
-
-            float horizontal = Input.GetAxis("Horizontal");
-            if (!dead && !attack)
-            {
-                anim.SetFloat("vSpeed", rb.velocity.y);
-                anim.SetFloat("Speed", Mathf.Abs(horizontal));
-                rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-            }
-            if (horizontal > 0 && !facingRight && !dead && !attack)
-            {
-                Flip(horizontal);
-            }
-
-            else if (horizontal < 0 && facingRight && !dead && !attack)
-            {
-                Flip(horizontal);
-            }
+            
         }
         else if(touch.phase == TouchPhase.Ended)
         {
